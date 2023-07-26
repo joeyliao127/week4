@@ -48,14 +48,9 @@ def error():
         return "發生未知的錯誤"
 
 
-@app.route("/calc")
-def calc():
-    num = int(request.args.get("number"))
-    num = num * num
-    return redirect(url_for("square", number = num))
-
 @app.route("/square/<number>")
 def square(number):
-    return render_template("squared.html", number=number)
+    num = int(number) * int(number)
+    return render_template("squared.html", number=num)
 app.run(port=3000)
 
